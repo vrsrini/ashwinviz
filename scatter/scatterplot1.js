@@ -115,7 +115,7 @@ d3.csv("bowlerscatter.csv").then(function (data) {
     // Remove old median lines
     svg.selectAll("line").remove(); // Avoid duplicate lines
 	 // Remove old median labels before drawing new ones
-	svg.selectAll("text").remove(); 
+	svg.selectAll("text.median-label").remove();  
 	
 	
 
@@ -132,6 +132,7 @@ d3.csv("bowlerscatter.csv").then(function (data) {
 	  
 	// Vertical line with label at the top (with rounding)
 	svg.append("text")
+	 .attr("class", "median-label")
      .attr("transform", `translate(${x(medianWickets)}, 5)`) 
      .attr("dy", ".71em")
      .style("text-anchor", "start")
@@ -151,6 +152,7 @@ d3.csv("bowlerscatter.csv").then(function (data) {
 	  
 	// Horizontal line with label below (with rounding)
   svg.append("text")
+	 .attr("class", "median-label")
      .attr("transform", `translate(${width - 10}, ${y(medianStrikeRate) + 15})`) 
      .attr("dy", ".35em") 
      .style("text-anchor", "end")
