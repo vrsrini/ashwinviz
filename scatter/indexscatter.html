@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Scatter Plot</title>
+ <script src="https://d3js.org/d3.v7.min.js"></script> 
+ <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+ <div class="intro-text"> 
+  <h2>R Ashwin's 500 Wicket Milestone</h2>
+  <p class="author">Srinivasan Ramani</p>
+   </div>
+   <p>India's R Ashwin captured his 500th wicket in the 3rd Test of the India-England Test series becoming the second Indian and just the ninth bowler to achieve that mark. Only 197 bowlers have picked 100 wickets for more in Test cricket, overall. The graph plots those bowlers' wickets against their Strike Rate (reversed). The dashed line indicates the medians for both axis.</p>
+
+  <p>A low strike rate indicates that a bowler picks wickets more quickly. You can select the type of bowler you want from the dropdown below. Note how the median strike rate and wickets change for pace bowlers and spinners. </p>
+	<p>In general, fast bowlers had a lower strike rate than spin bowlers. But Ashwin had the best strike rate among spinners who picked up 120 wickets in their career, even better than two highest wicket takers, M Muralitharan (55.05, 800 wickets) and Shane Warne (57.49, 708 wickets).</p>
+
+  <p> Mouse over the dots in the scatterplot to check the strike rates and wickets for all bowlers who picked up 100 or more wickets in Test cricket. Spinners are marked in blue (except Ashwin, who is marked in black, and pacers are marked in red.</p>
+ </div>
+
+  <div class="filters"> 
+    <i>Choose Bowler Type:</i>
+    <select id="typeDropdown">
+      <option value="All">All</option>
+      <option value="Spin">Spin</option>
+      <option value="Pace">Pace</option>
+    </select>
+
+    <i>Choose Team:</i>
+    <select id="teamDropdown">
+      <option value="All">All</option> 
+    </select>
+  </div>
+  <div class="filters"> 
+    <button id="renderButton">Render</button>
+</div>
+
+
+  <div id="scatterplot"></div> 
+
+ <script src="scatterplot1.js"></script> 
+</body>
+</html>
