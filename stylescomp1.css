@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    overflow-y: auto; /* Allow the body to scroll vertically */
+}
+
+.controls-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    position: fixed; /* Key change */
+    top: 20px; /* Adjust the top position as needed */
+    left: 20px; /* Adjust the left position as needed */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+
+#start-button,
+#reset-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+#reset-button {
+    margin-left: auto; /* Pushes the reset button to the far right */
+    background-color: #dc3545; /* Different color for reset button */
+}
+
+#maxWickets {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.max-wickets-label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#match-counter {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other content */
+    font-size: 18px;
+}
+
+.milestone-messages {
+    position: fixed;
+    top: 100px; /* Adjust based on your header/nav bar height */
+    right: 20px;
+    width: 600px; /* Or as per your design requirement */
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other content */
+    max-height: 600px; /* Adjust based on your preference */
+    overflow-y: auto; /* Allows scrolling within the container if content is too long */
+    font-size: 14px;
+}
+
+#chart { 
+    min-height: 600px; /* Ensures a minimum height, allows chart to grow taller */
+}
+
+#chart svg {
+    height: auto; /* Let the SVG expand based on its content */
+}
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    /* Additional styling */
+}
+
+#page-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px; /* Adjust size as needed */
+    color: #333; /* Adjust color as needed */
+}
+
+#author-name {
+    text-align: center;
+    margin-top: 10px; /* Slightly less space than above the title */
+    font-size: 20px; /* Smaller than the title */
+    color: #333; /* Same color as the title for consistency */
+    font-style: italic; /* Optional, if you want to differentiate the author's name */
+}
+
+/* Add any additional styles you need for your chart, page layout, etc. */
