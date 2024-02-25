@@ -143,32 +143,27 @@ function updateChart(matchData) {
 			  return d.Type === "Spin" ? "blue" : "red"; // Existing logic
 			}		
 		  })
-        .on("mouseover", tooltipShow)
-        .on("mouseout", tooltipHide);
-
+        //.on("mouseover", tooltipShow)
+        //.on("mouseout", tooltipHide);
+		.on("mouseover", function(event, d) {
+        tooltip.transition()
+          .duration(200)
+          .style("opacity", .9);
+		  tooltip.html(`Bowler: ${d.Name}<br>Wickets: ${d.wicketsTaken}<br>Matches: ${d.matchesPlayed}`)
+		  .style("left", (event.pageX) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      })
+	  .on("mousemove", function(event) {
+        tooltip.style("left", (event.pageX) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", function() {
+        tooltip.transition()
+          .duration(500)
+          .style("opacity", 0);
+      });
     bars.exit().remove();
 
-	// ===== Scrolling Integration =====
-	/*setTimeout(function() { 
-		const chartContainer = document.querySelector("#chart > svg > g"); 
-		const containerOffset = chartContainer.getBoundingClientRect().top; 
-
-		const tallestBar = svg.select(".bar").node(); 
-		const tallestBarHeight = tallestBar.getBBox().y + tallestBar.getBBox().height;
-		
-		svg.attr("height", tallestBarHeight + 50); // Adjust padding 
-
-		const idealOffset = 100; // Adjust this value to control the spacing
-
-		const scrollTarget = tallestBarHeight + containerOffset + idealOffset; 
-		window.scrollTo({
-			top: scrollTarget,
-			behavior: "smooth" 
-		});
-		
-		console.log("Target scroll position (top):", tallestBarHeight);
-		console.log("Current scroll position (top):", window.scrollY);
-	},0);*/
 
 // Exit message appending
 	matchData.forEach(d => {
@@ -340,6 +335,8 @@ function resetForNewRace() {
         top: 0,
         behavior: 'smooth'
     });
+	// To simply remove the existing Y axis and its ticks
+	svg.select(".y.axis").selectAll("*").remove();
 
     // Reset the maxWickets to its default value if needed
     document.getElementById('maxWickets').value = "100"; // or any default value you prefer
@@ -349,21 +346,6 @@ function resetForNewRace() {
     document.getElementById('milestone-messages').innerText = '';
 	document.getElementById('match-counter').innerText = `Matches Played: 0`;
 
-}
-
-function tooltipShow(event, d) {
-    const [x, y] = d3.pointer(event);
-
-    tooltip.style("opacity", 1)
-           .html(`Bowler: ${d.Name}<br>Wickets: ${d.wicketsTaken}<br>Matches: ${d.matchesPlayed}`)
-           .style("left", (x) + "px")
-           .style("top", (y) + "px");
-}
-
-// .style("left", (event.pageX) + "px")
-          //.style("top", (event.pageY - 28) + "px");
-function tooltipHide() {
-    tooltip.style("opacity", 0);
 }
 
 // Initialize the visualization

@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    overflow-y: auto;
+}
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 120px; /* Make space for fixed elements */
+}
+
+.controls-container, #match-counter, .milestone-messages {
+    position: fixed;
+    z-index: 1000;
+}
+
+.controls-container {
+    top: 400px;
+    left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+#match-counter {
+    top: 400px;
+    right: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+.milestone-messages {
+    top: 460px;
+    right: 10px;
+    width: 600px;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+
+#start-button, #reset-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+#reset-button {
+    background-color: #dc3545;
+}
+
+#maxWickets {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.max-wickets-label {
+    font-size: 16px;
+}
+
+#chart { 
+    width: 100%;
+    min-height: 600px;
+}
+
+#chart svg {
+    width: 100%;
+    height: auto;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
