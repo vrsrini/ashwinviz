@@ -11,6 +11,8 @@ var svg = d3.select("body").append("svg")
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
+	
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 var x = d3.scaleLinear().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
@@ -90,7 +92,7 @@ function updateScatterplot(data) {
 		}
 	  });
 
-    enteredCircles.merge(circles)
+/*    enteredCircles.merge(circles)
         .on("mouseover", (event, d) => {
             var datasetType = datasetDropdown.property("value");
             var displayWickets = datasetType === "Away" ? d.Owickets : d.Wickets;
@@ -103,7 +105,42 @@ function updateScatterplot(data) {
         })
         .on("mouseout", () => {
             tooltip.transition().duration(500).style("opacity", 0);
-        });
+        });*/
+	enteredCircles.merge(circles)
+		.on("mouseover", (event, d) => { 
+			if (!isTouchDevice) {  // Only for desktop
+				var datasetType = datasetDropdown.property("value");
+				var displayWickets = datasetType === "Away" ? d.Owickets : d.Wickets;
+				var displayStrikeRate = datasetType === "Away" ? d.OstrikeRate : d.StrikeRate;
+
+				tooltip.transition().duration(200).style("opacity", .9);
+				tooltip.html(`BowlerName: ${d.Name}<br/>Wickets: ${displayWickets}<br/>StrikeRate: ${displayStrikeRate}`)
+					.style("left", (event.pageX) + "px")
+					.style("top", (event.pageY - 28) + "px");
+			}
+		})
+		.on("mouseout", () => {
+			if (!isTouchDevice) { // Only for desktop
+				tooltip.transition().duration(500).style("opacity", 0);
+			}
+		})
+		.on("touchstart", (event, d) => { // For touch devices
+			var datasetType = datasetDropdown.property("value");
+			var displayWickets = datasetType === "Away" ? d.Owickets : d.Wickets;
+			var displayStrikeRate = datasetType === "Away" ? d.OstrikeRate : d.StrikeRate;
+
+			tooltip.transition().duration(200).style("opacity", .9); // Consider quicker fade-in
+			tooltip.html(`BowlerName: ${d.Name}<br/>Wickets: ${displayWickets}<br/>StrikeRate: ${displayStrikeRate}`)
+					.style("left", (event.touches[0].pageX) + "px")
+					.style("top", (event.touches[0].pageY - 28) + "px");
+		})
+		.on("touchend", () => { // Simplified touchend behavior
+			tooltip.transition().duration(500).style("opacity", 0);
+		}); 
+    // No need for a separate touchmove event in this case 
+
+		
+	
 }
 
 
