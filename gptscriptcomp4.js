@@ -16,6 +16,8 @@ document.getElementById('maxWickets').addEventListener('change', function() {
   // Update the chart to reflect the new maxWickets value
 });
 
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
 // D3 chart setup
 const margin = { top: 100, right: 160, bottom: 30, left: 50 },
       width = 1500 - margin.left - margin.right,
@@ -146,22 +148,41 @@ function updateChart(matchData) {
         //.on("mouseover", tooltipShow)
         //.on("mouseout", tooltipHide);
 		.on("mouseover", function(event, d) {
-        tooltip.transition()
-          .duration(200)
-          .style("opacity", .9);
-		  tooltip.html(`Bowler: ${d.Name}<br>Wickets: ${d.wicketsTaken}<br>Matches: ${d.matchesPlayed}`)
-		  .style("left", (event.pageX) + "px")
-          .style("top", (event.pageY - 28) + "px");
-      })
-	  .on("mousemove", function(event) {
-        tooltip.style("left", (event.pageX) + "px")
-          .style("top", (event.pageY - 28) + "px");
-      })
-      .on("mouseout", function() {
-        tooltip.transition()
-          .duration(500)
-          .style("opacity", 0);
-      });
+			if (!isTouchDevice) { // Only for desktop
+				tooltip.transition()
+					.duration(200)
+					.style("opacity", .9);
+				tooltip.html(`Bowler: ${d.Name}<br>Wickets: ${d.wicketsTaken}<br>Matches: ${d.matchesPlayed}`)
+					.style("left", (event.pageX) + "px")
+					.style("top", (event.pageY - 28) + "px");
+			}
+		})
+		.on("mousemove", function(event) {
+			if (!isTouchDevice) { // Only for desktop
+				tooltip.style("left", (event.pageX) + "px")
+					.style("top", (event.pageY - 28) + "px");
+			}
+		})
+		.on("mouseout", function() {
+			if (!isTouchDevice) { // Only for desktop
+				tooltip.transition()
+					.duration(500)
+					.style("opacity", 0);
+			} 
+		})
+		.on("touchstart", function(event, d) { //  For touch devices
+			tooltip.transition()
+				.duration(200) // Consider a quicker fade-in for touch
+				.style("opacity", .9);
+			tooltip.html(`Bowler: ${d.Name}<br>Wickets: ${d.wicketsTaken}<br>Matches: ${d.matchesPlayed}`)
+				.style("left", (event.touches[0].pageX) + "px") 
+				.style("top", (event.touches[0].pageY - 28) + "px");
+		})
+		.on("touchend", function() { 
+			tooltip.transition()
+				.duration(500)
+				.style("opacity", 0);
+		});
     bars.exit().remove();
 
 
