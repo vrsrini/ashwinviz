@@ -1,0 +1,124 @@
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-y: visible;
+}
+
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 120px; /* Make space for fixed elements */
+}
+
+/* Updated Styles */
+.race-description-wrapper { /* Assuming you add a wrapper div */ 
+    display: flex; 
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Or align as needed */
+    gap: 20px; 
+    margin-top: 20px; /* Add some space after the paragraph */
+}
+
+	.controls-container, #match-counter, .milestone-messages {
+		/*position: fixed;*/
+		z-index: 1000;
+	}
+
+.controls-container {
+    /*top: 400px;*/
+	position: fixed; /* Key change */
+    left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+#start-button, #reset-button {
+	padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+#reset-button {
+    background-color: #dc3545;
+}
+
+#maxWickets {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.max-wickets-label {
+    font-size: 16px;
+}
+
+.milestone-messages {
+    position: fixed;
+    /*top: 450px; Adjust based on your header/nav bar height */
+    right: 20px;
+    width: 600px; /* Or as per your design requirement */
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other content */
+    max-height: 600px; /* Adjust based on your preference */
+    overflow-y: auto; /* Allows scrolling within the container if content is too long */
+    font-size: 14px;
+	margin-top: 60px; /* Keep the margin-top */
+}
+
+#chart { 
+    min-height: 600px; /* Ensures a minimum height, allows chart to grow taller */
+}
+
+#chart svg {
+    height: auto; /* Let the SVG expand based on its content */
+}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none; /* This line is crucial for not interfering with mouse events */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.5s; /* Smooth transition for appearing and disappearing */
+}
+
+#page-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px; /* Adjust size as needed */
+    color: #333; /* Adjust color as needed */
+}
+
+#author-name {
+    text-align: center;
+    margin-top: 10px; /* Slightly less space than above the title */
+    font-size: 20px; /* Smaller than the title */
+    color: #333; /* Same color as the title for consistency */
+    font-style: italic; /* Optional, if you want to differentiate the author's name */
+}
+
+/* Add any additional styles you need for your chart, page layout, etc. */
