@@ -10,17 +10,37 @@
   <h2>R Ashwin's 500 Wicket Milestone</h2>
   <p class="author">Srinivasan Ramani</p>
    </div>
-   <p>India's R Ashwin captured his 500th wicket in the 3rd Test of the India-England Test series becoming the second Indian and just the ninth bowler to achieve that mark. Only 197 bowlers have picked 100 wickets for more in Test cricket, overall. The graph plots those bowlers' wickets against their Strike Rate (reversed). The dashed line indicates the medians for both axis.</p>
+   <p>India's spin bowling lynchpin is at a stage of his career where he is creating a record/major milestone in every Test match he is playing. Earlier this month, R Ashwin captured his 500th wicket in the 3rd Test of the India-England Test series becoming the second Indian and just the ninth bowler to achieve that mark.</p> 
 
-  <p>A low strike rate indicates that a bowler picks wickets more quickly. You can select the type of bowler you want from the dropdown below. Note how the median strike rate and wickets change for pace bowlers and spinners. </p>
-  <p> Mouse over the dots in the scatterplot to check the strike rates and wickets for all bowlers who picked up 100 or more wickets in Test cricket. Spinners are marked in blue (except Ashwin, who is marked in black, and pacers are marked in red.</p>
-	<p>In general, fast bowlers had a lower strike rate than spin bowlers. But Ashwin had the best strike rate among spinners who picked up 120 wickets in their career, even better than two highest wicket takers, M Muralitharan (55.05, 800 wickets) and Shane Warne (57.49, 708 wickets).</p>
-	<p>When you look at overseas records on the other hand (click on dropdown to choose "Overseas"), it is clear Shane Warne (54.7) among spinners and Dale Steyn (45.5) among pacers had the best strike rates for bowlers who picked up at least 150 overseas wickets. Ashwin is not far behind, with a strike of 62.1 per wicket. (/p)
+<p> In the first week of March 2024, Ashwin would be playing in his 100th Test match. He will be only the 14th cricketer, among 313 Indian Test players ever, to play in 100 Tests. </p>
 
+<p> Ashwin's record in Tests in phenomenal. His 507 wickets in 99 matches were achieved at an average of 23.91 and a fabulous strike rate of 51.3. Here's a breakup of the 507 wickets by opponent teams </p>
+
+<img src="opponent.svg" alt="Ashwin's wickets by opponents" width="600" height="375">
+
+<p> The bulk of the 507 wickets - 354 of them to be precise - were achieved in India, the highest for any Indian bowler. The next best are Anil Kumble (350), Harbhajan Singh (265) and Kapil Dev (219). Here's a look at the average and strike rate for Ashwin venue-wise. While he has a great record in India, Sri Lanka, Bangladesh and West Indies, his average (39.4) and strike (83.7) in the pace-friendly SENA (South Africa, England, New Zealand and Australia) countries pale in comparison to other venues.</p>
+
+<style>
+            table td, table th {
+                font-size: smaller;
+                border: 1px solid black;
+                line-height: 1.4;
+                padding: 10px 10px;
+            }
+        </style><table><tbody><tr><th>Venue</th><th>Matches</th><th>Wkts</th><th>Best figures (Innings)</th><th>Best figures (Match)</th><th>Average</th><th>Strike Rate</th><th>5fers</th><th>10fers</th></tr><tr><td>in India</td><td>59</td><td>354</td><td>7/59</td><td>13/140</td><td>21.3</td><td>46.6</td><td>27</td><td>6</td></tr><tr><td>in SENA*</td><td>25</td><td>71</td><td>4/55</td><td>7/121</td><td>39.4</td><td>83.7</td><td>0</td><td>0</td></tr><tr><td>in West Indies</td><td>6</td><td>32</td><td>7/71</td><td>12/131</td><td>19.3</td><td>41.4</td><td>4</td><td>1</td></tr><tr><td>in Sri Lanka</td><td>6</td><td>38</td><td>6/46</td><td>10/160</td><td>21.6</td><td>41.1</td><td>3</td><td>1</td></tr><tr><td>in Bangladesh</td><td>3</td><td>12</td><td>5/87</td><td>6/137</td><td>28.4</td><td>55.9</td><td>1</td><td>0</td></tr></tbody></table>
+ 
+ <p> Yet another telling statistic for Ashwin's wickets is that nearly half of them are of left handed batsmen (LHB). Ashwin has been lethal against southpaws, picking 252 (the highest for any bowler) of them in his total tally of 507. The % of LHB that Ashwin has picked up - 49.7% is also the highest. See the chart for bowlers with more than 400 wickets to find out their LHB% and total number of wickets against LHBs </p>
+ 
+  <img src="LHB.svg" alt="Ashwin vs others, LHB, LHB%" width="600" height="375">
+
+
+<p>Where does Ashwin's records stand in the pantheon of best bowlers in the world. Only 197 bowlers have picked 100 wickets for more in Test cricket, overall. Strike Rates (balls taken to pick up a wicket) are very useful in comparing bowlers. Lower the strike rate, more lethal the bowler. We plot a graph for those bowlers' wickets against their Strike Rate (reversed). The dashed line indicates the medians for both axis.</p>
+
+  <p>You can select the type of bowler you want from the dropdown below. Note how the median strike rate and wickets change for pace bowlers and spinners. Mouse over the dots in the scatterplot to check the strike rates and wickets for all bowlers who picked up 100 or more wickets in Test cricket. Spinners are marked in blue (except Ashwin, who is marked in black, and pacers are marked in red.</p>
 
  </div>
   <div class="filters">
-  <i> Dataset :</i>
+  <i> Overall or Overseas :</i>
   <select id="datasetDropdown">
     <option value="All">All</option>
     <option value="Away">Overseas</option>
@@ -49,6 +69,8 @@
   <div id="scatterplot"></div> 
 
  <script src="namespaced_scatterplot3.js"></script> 
+
+<p>In general, fast bowlers had a lower strike rate than spin bowlers. But Ashwin had the best strike rate among spinners who picked up 120 wickets in their career, even better than two highest wicket takers, M Muralitharan (55.05, 800 wickets) and Shane Warne (57.49, 708 wickets).When you look at overseas records on the other hand (click on dropdown to choose "Overseas"), it is clear Shane Warne (54.7) among spinners and Dale Steyn (45.5) among pacers had the best strike rates for bowlers who picked up at least 150 overseas wickets. Ashwin is not far behind, with a strike of 62.1 per wicket. </p>
 
 <p>If you look closely at the scatterplot, R Ashwin stands out for having among the best strike rates among bowlers, and especially among spin bowlers. His strike rate is even better than Muthiah Muralitharan and Shane Warne's. And among Indians, his compatriot Ravindra Jadeja's comes closest. It is this tremendous strike rate that has allowed Ashwin to pick up 500 wickets quite quickly (in just 98 Tests) relative to other bowlers.</p>
 
